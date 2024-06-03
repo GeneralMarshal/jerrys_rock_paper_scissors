@@ -49,7 +49,7 @@ actor rockPaper{
       case (#Paper, #Scissors) { return ("Paper 🆚 Scissors",#Lose "YOU LOST, Try harder, you only fail when you give up 💪");};
 
       case (#Scissors, #Rock) { return ("Scissors 🆚 Rock",#Lose "YOU LOST, Try harder, you only fail when you give up 💪");};
-      case (#Scissors, #Paper) { return ("Scissots 🆚 Paper", #Win  "YOU WIN, Congratulations, you're amazing 🏆"); };
+      case (#Scissors, #Paper) { return ("Scissors 🆚 Paper", #Win  "YOU WIN, Congratulations, you're amazing 🏆"); };
       case (#Scissors, #Scissors) { return ("Scissors 🆚 Scissors", #Draw "SO CLOSE, Try again 🤝");};
     };
   };

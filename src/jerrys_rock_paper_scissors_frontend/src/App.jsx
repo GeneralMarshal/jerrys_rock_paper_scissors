@@ -1,61 +1,55 @@
-import "./App.css"
+import './App.css';
 import { useState } from 'react';
 import { jerrys_rock_paper_scissors_backend } from 'declarations/jerrys_rock_paper_scissors_backend';
 
 function App() {
-  // const [greeting, setGreeting] = useState('');
+  const [result, setResult] = useState('');
+  const [message, setMessage] = useState('');
+  const [clicked, setClicked] = useState("")
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   const name = event.target.elements.name.value;
-  //   jerrys_rock_paper_scissors_backend.greet(name).then((greeting) => {
-  //     setGreeting(greeting);
-  //   });
-  //   return false;
-  // }
+  function handleClick(choice, event) {
+    setResult("...loading")
+    setMessage("...loading")
 
- 
-   function clickRock(){
-    jerrys_rock_paper_scissors_backend.userChoice(myChoice) 
-    
+    jerrys_rock_paper_scissors_backend.userChoice(choice).then(([text, outcome]) => {
+      setResult(text);
+      setMessage(parseOutcome(outcome));
+    }).catch(err => console.log(err));
+
+    event.currentTarget.classList.add('clicked');
+    console.log(event.currentTarget.classList)
   }
+
+  function parseOutcome(outcome) {
+    console.log(outcome)
+    if ('Win' in outcome) {
+      return outcome.Win;
+    } else if ('Lose' in outcome) {
+      return outcome.Lose;
+    } else if ('Draw' in outcome) {
+      return outcome.Draw;
+    } else {
+      return 'Unexpected outcome';
+    }
+  }
+
   return (
-    // <main>
-    //   <img src="/logo2.svg" alt="DFINITY logo" />
-    //   <br />
-    //   <br />
-    //   <form action="#" onSubmit={handleSubmit}>
-    //     <label htmlFor="name">Enter your name: &nbsp;</label>
-    //     <input id="name" alt="Name" type="text" />
-    //     <button type="submit">Click Me!</button>
-    //   </form>
-    //   <section id="greeting">{greeting}</section>
-    // </main>
-
-   
-    
-    // function clickPaper(){
-      
-    // }
-    
-    // function clickScissors(){
-      
-    // }
-
     <main className="main">
       <h1>Rock, Paper, Scissors</h1>
-      <p>choose:</p>
+      <p>Choose:</p>
       <div className='user-options'>
-        <div onClick={handleClick()}>
+        <button onClick={(e) => handleClick({ Rock: null },e)}>
           Rock
-        </div>
-        <div onClick={handleClick()}>
+        </button>
+        <button onClick={(e) => handleClick({ Paper: null },e)}>
           Paper
-        </div>
-        <div onClick={handleClick()}>
+        </button>
+        <button onClick={(e) => handleClick({ Scissors: null },e)}>
           Scissors
-        </div>
+        </button>
       </div>
+      <p>Result: {result}</p>
+      <p>Message: {message}</p>
     </main>
   );
 }
