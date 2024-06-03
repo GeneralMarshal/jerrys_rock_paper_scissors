@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "jerrys_rock_paper_scissors_backend": {
+      "main": "src/jerrys_rock_paper_scissors_backend/main.mo",
+      "type": "motoko"
+    },
+    "jerrys_rock_paper_scissors_frontend": {
+      "dependencies": [
+        "jerrys_rock_paper_scissors_backend"
+      ],
+      "source": [
+        "src/jerrys_rock_paper_scissors_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "jerrys_rock_paper_scissors_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

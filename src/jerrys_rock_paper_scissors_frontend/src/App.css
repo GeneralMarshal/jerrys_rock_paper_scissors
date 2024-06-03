@@ -1,0 +1,36 @@
+
+*{
+    margin: 0;
+    padding:0;
+    border: 0 ;
+    box-sizing: border-box ;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(161, 156, 156);
+    
+}
+.main p{
+    margin-top: 20px ;
+}
+.user-options{
+    display: flex;
+    width: 500px ;
+    justify-content: space-around;
+}
+.user-options div{
+    border: 1px solid black;
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: rgb(231, 190, 70);
+}
